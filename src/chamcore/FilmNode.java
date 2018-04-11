@@ -1,10 +1,7 @@
 package chamcore;
 
-import java.nio.file.Path; //https://docs.oracle.com/javase/7/docs/api/java/nio/file/Path.html
 import java.io.File; //https:docs.oracle.com/javase/7/docs/api/java/io/File.html
 import java.util.ArrayList;
-
-import chamcore.FilmNode.FileFormat;
 
 /*
  * TODO: Path is a locator, File is the reference
@@ -69,14 +66,28 @@ public class FilmNode {
 		
 		title = f.title;
 		year = f.year;
-		for(int i = 0; i<(f.genres.size()); i++) {
-			genres.set(i, f.genres.get(i));
+		
+		if(f.genres.size() == 0) {
+			genres = new ArrayList<String>();	//blank array must be considered separately
+		}
+		else {
+			genres = new ArrayList<String>();
+			for(int i = 0; i<(f.genres.size()); i++) {
+				genres.add(f.genres.get(i));	//if modifying, be sure to ADD, not direct access
+			}
 		}
 		
 		writer = f.writer;
 		director = f.director;
-		for(int i = 0; i<(f.actors.size()); i++) {
-			actors.set(i, f.actors.get(i));
+		
+		if(f.actors.size() == 0) {	
+			actors = new ArrayList<String>();	//blank array must be considered separately
+		}
+		else {
+			actors = new ArrayList<String>();
+			for(int i = 0; i<(f.actors.size()); i++) {
+				actors.add(f.actors.get(i));	//if modifying, be sure to ADD, not direct access
+			}
 		}
 		
 		numTimesOpened = f.numTimesOpened;
@@ -93,14 +104,6 @@ public class FilmNode {
 		title = ttl;
 		year = yr;
 	}
-	
-	/*
-	 * File-Load Constructor
-	 */
-//	public FilmNode() {
-//		this();
-//		
-//	}
 
 	
 	/////////////////////////////////////////////////////////
@@ -262,7 +265,7 @@ public class FilmNode {
 		
 		String genreFrag = "|G|";
 		for (String genre : genres) {
-			genreFrag += (genre + '|');
+			genreFrag += (genre + '>');
 		}
 		
 		String writerFrag = "|W|" + writer;
@@ -270,7 +273,7 @@ public class FilmNode {
 		
 		String actorFrag = "|A|";
 		for (String actor : actors) {
-			actorFrag += (actor + '|');
+			actorFrag += (actor + '>');
 		}
 		
 		String openFrag = "|O|" + (Integer.toString(numTimesOpened));
@@ -318,6 +321,8 @@ public class FilmNode {
 		
 		return false; //TODO
 	}
+	
+	
 	
 //	public boolean searchLiteral() {
 //		numTimesOpened++;
