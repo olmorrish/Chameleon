@@ -9,8 +9,8 @@ import java.util.ArrayList;
  */
 
 /*
- * FilmNode Contains all abstracted information relating to a film or movie This class is removed from the usage of the file 
- * itself; it simply contains information to be provided to actual implementation within Chameleon. 
+ * FilmNode Contains all abstracted information relating to a film. This class is removed from the usage of the 
+ * video file itself; it simply contains information to be provided to actual implementation within Chameleon. 
  * 
  * FilmNode contains the following film information:
  * 		Title, Release Year. Genres, Writer, Director, Actors
