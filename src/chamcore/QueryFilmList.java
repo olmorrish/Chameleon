@@ -6,13 +6,20 @@ package chamcore;
  */
 public class QueryFilmList extends AbstractFilmList {
 
+	/*
+	 * Empty constructor
+	 */
 	public QueryFilmList() {
-		// TODO Auto-generated constructor stub
+		head = null;
+		tail = head;
 	}
 
+	/*
+	 * Head node constructor
+	 */
 	public QueryFilmList(FilmNode headNode) {
-		super(headNode);
-		// TODO Auto-generated constructor stub
+		head = headNode;
+		tail = head;
 	}
 
 	/////////////////////////////////////////////////////////

@@ -11,8 +11,10 @@ public class CoreFilmList extends AbstractFilmList {
 		// TODO Auto-generated constructor stub
 	}
 
+	/*
+	 * Constructor from file
+	 */
 	public CoreFilmList(FilmNode headNode) {
-		super(headNode);
 		// TODO Auto-generated constructor stub
 	}
 

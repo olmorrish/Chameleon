@@ -12,8 +12,6 @@ import chamcore.FilmNode.FileFormat;
 
 public class FilmNodeTests {
 
-
-	
 	@Test
 	public void testNodeNextStructure() {
 		FilmNode node1 = new FilmNode();
