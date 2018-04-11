@@ -105,6 +105,58 @@ public class FilmNode {
 		year = yr;
 	}
 
+	/////////////////////////////////////////////////////////
+	/// Equality Checker, Ignores "next" Param
+	/////////////////////////////////////////////////////////	
+	
+	/*
+	 * Alternate equals comparator; ignores "next" parameter 
+	 * compares content of the node only; this is a utility method to assist class testability
+	 */
+	public boolean equalsContentOf(FilmNode compare) {
+		
+		if(!(title.equals(compare.getTitle())))
+			return false;
+		if(year != compare.getYear())	
+			return false;
+		
+		if(genres.size() == 0) {
+			if(compare.getGenres().size() != 0)
+				return false;
+		}
+		else {
+			for(String genre : genres) {
+				if(!compare.contains(genre))
+					return false;
+			}
+		}
+		
+		if(!writer.equals(compare.getWriter()))
+			return false;
+		if(!director.equals(compare.getDirector()))
+			return false;
+		
+		if(actors.size() == 0) {
+			if(compare.getActors().size() != 0)
+				return false;
+		}
+		else {
+			for(String actor : actors) {
+				if(!compare.contains(actor))
+					return false;
+			}
+		}		
+		
+		if(numTimesOpened != compare.getNumTimesOpened())
+			return false;
+		if(format != compare.getFileFormat())
+			return false;
+		if(!location.equals(compare.getLocation()))
+			return false;
+
+		return true; //if all checks pass, true is returned instead of false
+	}
+	
 	
 	/////////////////////////////////////////////////////////
 	/// Linked List Get/Set

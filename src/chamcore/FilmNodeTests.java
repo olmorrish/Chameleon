@@ -1,6 +1,7 @@
 package chamcore;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -11,13 +12,43 @@ import chamcore.FilmNode.FileFormat;
 
 public class FilmNodeTests {
 
+//	@Test
+//	public void testNodeNextStructure() {
+//		FilmNode node1 = new FilmNode();
+//		FilmNode node2 = new FilmNode();
+//		FilmNode node3 = new FilmNode();
+//		
+//		node1.setNext(node2);
+//		node2.setNext(node3);
+//		node3.setNext(node1);
+//		
+//		//TODO: equalsContentOf assertTrue(node1.getNext() node2);
+//		
+//		
+//	}
+	
 	@Test
-	public void testNodeNextStructure() {
+	public void testContentEqualityMethodForEqualNodes() {
+		FilmNode node1 = new FilmNode();
+		FilmNode node2 = new FilmNode();
 		
+		node1.setNext(node2);
 		
+		assertTrue(node1.equalsContentOf(node2));
 	}
 	
-
+	@Test
+	public void testContentEqualityMethodForNonEqualNodes() {
+		FilmNode node1 = new FilmNode();
+		node1.setTitle("Something");
+		FilmNode node2 = new FilmNode();
+		node2.setTitle("Something Else");
+		
+		node1.setNext(node2);
+		
+		assertFalse(node1.equalsContentOf(node2));
+	}	
+	
 //	@Test
 //	public void testCopyOfNodeDoesNotOverlapOriginalMemory() {
 //		
