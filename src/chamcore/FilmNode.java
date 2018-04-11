@@ -265,6 +265,10 @@ public class FilmNode {
 		}
 	}
 	
+	public void setNumTimesOpened(int num) {
+		numTimesOpened = num;
+	}
+	
 	public void setFileFormat(String ext) {
 		switch (ext) {
 		case "AVI": format = FileFormat.AVI;
