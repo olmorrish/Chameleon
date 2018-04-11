@@ -7,6 +7,9 @@ import chamcore.FilmNode.FileFormat;
 
 /*
  * Abstract utility class to assist in navigating file systems
+ * 
+ * Navigator is to be used by the Chameleon program to allow the addition of multiple film files of varying formats to 
+ * 	the database. 
  */
 public abstract class Navigator {
 

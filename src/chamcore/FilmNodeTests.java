@@ -12,20 +12,29 @@ import chamcore.FilmNode.FileFormat;
 
 public class FilmNodeTests {
 
-//	@Test
-//	public void testNodeNextStructure() {
-//		FilmNode node1 = new FilmNode();
-//		FilmNode node2 = new FilmNode();
-//		FilmNode node3 = new FilmNode();
-//		
-//		node1.setNext(node2);
-//		node2.setNext(node3);
-//		node3.setNext(node1);
-//		
-//		//TODO: equalsContentOf assertTrue(node1.getNext() node2);
-//		
-//		
-//	}
+
+	
+	@Test
+	public void testNodeNextStructure() {
+		FilmNode node1 = new FilmNode();
+		FilmNode node2 = new FilmNode();
+		FilmNode node3 = new FilmNode();
+		
+		node1.setNext(node2);
+		node2.setNext(node3);
+		node3.setNext(node1);
+		
+		assertTrue(node1.getNext().equalsContentOf(node2));
+		assertTrue(node2.getNext().equalsContentOf(node3));
+		assertTrue(node3.getNext().equalsContentOf(node1));
+		
+	}
+	
+	@Test
+	public void testContentEqualityMethodOnSingleNode() {
+		FilmNode node1 = new FilmNode();
+		assertTrue(node1.equalsContentOf(node1));
+	}	
 	
 	@Test
 	public void testContentEqualityMethodForEqualNodes() {
@@ -74,6 +83,11 @@ public class FilmNodeTests {
 		assertTrue(node.getLocation().getPath().equals("")); //relative path
 
 	}
+
+	
+	/////////////////////////////////////////////////////////
+	/// toStringSaveFormat() tests
+	/////////////////////////////////////////////////////////		
 	
 	@Test
 	public void testBasicNodeToStringFormat() {

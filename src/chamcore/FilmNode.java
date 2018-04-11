@@ -1,16 +1,27 @@
 package chamcore;
 
-import java.io.File; //https:docs.oracle.com/javase/7/docs/api/java/io/File.html
+import java.io.File; //TODO: reference info @ https:docs.oracle.com/javase/7/docs/api/java/io/File.html
 import java.util.ArrayList;
 
 /*
- * TODO: Path is a locator, File is the reference
+ * TODO: Path is a locator, File is the reference;may require rewriting segments
+ * TODO: implement cover image reference
  */
 
 /*
- * Contains all abstracted information relating to a film or movie
- * This class is removed from the usage of the file itself; it simply contains
- * information to be provided to actual implementation within Chameleon
+ * FilmNode Contains all abstracted information relating to a film or movie This class is removed from the usage of the file 
+ * itself; it simply contains information to be provided to actual implementation within Chameleon. 
+ * 
+ * FilmNode contains the following film information:
+ * 		Title, Release Year. Genres, Writer, Director, Actors
+ * Additionally, meta-data for file info is provided:
+ * 		Number of times file has been opened, location in file system, and file format. 
+ * 
+ * Current supported file formats are AVI, FLV, WMV, MOV, and MP4. 
+ * 
+ * Getter and setter methods are provided for all data, including a reference for the "next" node in a list. 
+ * Refer to AbstractFilmList for details on implementation.
+ * 		FilmNode is not meant to be instantiated outside of a Chameleon list structure.
  */
 public class FilmNode {
 
@@ -29,9 +40,11 @@ public class FilmNode {
 	private String director;
 	private ArrayList<String> actors;
 	
+	//file data parameters
 	private int numTimesOpened;
 	private FileFormat format; 
 	private File location;
+	//TODO: cover image reference to be added
 	
 	
 	/////////////////////////////////////////////////////////
