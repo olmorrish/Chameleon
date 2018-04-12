@@ -1,4 +1,4 @@
-package chamcore;
+package chamrunner;
 
 import java.nio.file.Path;
 //import java.util.ArrayList;
@@ -12,7 +12,7 @@ import chamcore.FilmNode.FileFormat;
  * 	the database. 
  */
 public abstract class Navigator {
-
+	
 	public FileFormat fileExtensionOf(Path path){
 		String pathStr = path.toString();
 		int i = (pathStr).lastIndexOf('.');

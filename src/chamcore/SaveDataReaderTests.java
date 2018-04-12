@@ -29,7 +29,7 @@ public class SaveDataReaderTests {
 	public void testTitleOfNodeBuildsFromString() {
 		String titleTest = "|T|TitleHere|Y|0|G||W||D||A||O|0|F|NOFORMAT|L|";
 
-		FilmNode nodeFromString = FilmNode(reader.buildFilmNode(titleTest));
+		FilmNode nodeFromString = reader.buildFilmNode(titleTest);
 		FilmNode standardNode = new FilmNode();
 		standardNode.setTitle("TitleHere");
 

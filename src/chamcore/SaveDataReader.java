@@ -7,10 +7,8 @@ package chamcore;
 public class SaveDataReader {
 
 	public SaveDataReader() {
-		// TODO Auto-generated constructor stub
+		
 	}
-
-	
 	
 	/*
 	 * converts a FilmNode's string representation into an actual FilmNode
