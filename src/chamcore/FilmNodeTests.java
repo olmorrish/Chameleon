@@ -78,7 +78,7 @@ public class FilmNodeTests {
 		
 		assertTrue(node.getNumTimesOpened() == 0);
 		assertTrue(node.getFileFormat() == FileFormat.NOFORMAT);
-		assertTrue(node.getLocation().getPath().equals("")); //relative path
+		assertTrue(node.getLocationAsString().equals("/")); //relative path
 
 	}
 

@@ -1,6 +1,7 @@
 package chamcore;
 
-import java.io.File; //TODO: reference info @ https:docs.oracle.com/javase/7/docs/api/java/io/File.html
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /*
@@ -43,7 +44,7 @@ public class FilmNode {
 	//file data parameters
 	private int numTimesOpened;
 	private FileFormat format; 
-	private File location;
+	private Path location;
 	//TODO: cover image reference to be added
 	
 	
@@ -67,7 +68,7 @@ public class FilmNode {
 		
 		numTimesOpened = 0;
 		format = FileFormat.NOFORMAT;
-		location = new File("");
+		location = Paths.get("/");
 			
 	}
 	
@@ -224,8 +225,12 @@ public class FilmNode {
 		return format;
 	}
 	
-	public File getLocation() {
+	public Path getLocation() {
 		return location;
+	}
+	
+	public String getLocationAsString() {
+		return location.toString();
 	}
 	
 	
@@ -286,7 +291,13 @@ public class FilmNode {
 		}
 	}
 	
-	public void setLocation(File loc) {location = loc;}
+	public void setLocation(Path loc) {
+		location = loc;
+	}
+	
+	public void setLocation(String path) {
+		location = Paths.get(path);		
+	}
 	
 	
 	/////////////////////////////////////////////////////////
@@ -351,6 +362,7 @@ public class FilmNode {
 		
 		String ret = titleFrag + yearFrag + genreFrag + writerFrag;
 		ret = ret + directorFrag + actorFrag + openFrag + formatFrag + locationFrag;
+		ret = ret + "|";
 		return ret;
 	}
 	
@@ -390,6 +402,8 @@ public class FilmNode {
 		
 		return false; //TODO
 	}
+
+
 	
 	
 	
