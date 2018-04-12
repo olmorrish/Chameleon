@@ -1,4 +1,4 @@
-package chamcore;
+package chamCore;
 
 /*
  * SaveDataReader is a file reader that contains implementations to help construct the CoreFilmList

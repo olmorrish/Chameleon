@@ -1,4 +1,4 @@
-package chamcore;
+package chamCore;
 
 /*
  * FilmList is the abstract superclass for data structures containing FilmNodes;

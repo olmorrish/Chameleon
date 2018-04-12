@@ -1,4 +1,4 @@
-package chamcore;
+package chamCore;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -44,6 +44,7 @@ public class FilmNode {
 	private int numTimesOpened;
 	private FileFormat format; 
 	private Path location;
+	private Path coverLocation;
 	//TODO: cover image reference to be added
 	
 	
@@ -68,6 +69,7 @@ public class FilmNode {
 		numTimesOpened = 0;
 		format = FileFormat.NOFORMAT;
 		location = Paths.get("\\");
+		coverLocation = Paths.get("\\");
 			
 	}
 	
@@ -106,6 +108,7 @@ public class FilmNode {
 		numTimesOpened = f.numTimesOpened;
 		format = f.format;
 		location = f.location;
+		coverLocation = f.coverLocation; 
 		
 	}	
 
@@ -231,7 +234,14 @@ public class FilmNode {
 	public String getLocationAsString() {
 		return location.toString();
 	}
+
+	public Path getCoverLocation() {
+		return coverLocation;
+	}
 	
+	public String getCoverLocationAsString() {
+		return coverLocation.toString();
+	}
 	
 	/////////////////////////////////////////////////////////
 	/// Setters 
@@ -298,6 +308,13 @@ public class FilmNode {
 		location = Paths.get(path);		
 	}
 	
+	public void setCoverLocation(Path loc) {
+		coverLocation = loc;
+	}
+	
+	public void setCoverLocation(String path) {
+		coverLocation = Paths.get(path);		
+	}
 	
 	/////////////////////////////////////////////////////////
 	/// List Adders and Removers
@@ -358,15 +375,17 @@ public class FilmNode {
 		String openFrag = "|O|" + (Integer.toString(numTimesOpened));
 		String formatFrag = "|F|" + format.toString();
 		String locationFrag = "|L|" + (location.toString());
+		String coverFrag = "|C|" + (coverLocation.toString());
 		
 		String ret = titleFrag + yearFrag + genreFrag + writerFrag;
-		ret = ret + directorFrag + actorFrag + openFrag + formatFrag + locationFrag;
+		ret = ret + directorFrag + actorFrag + openFrag + formatFrag + locationFrag + coverFrag;
 		ret = ret + "|";
 		return ret;
 	}
 	
 	/*
 	 * Creates a string array of all user-search-able parameters to allow for easy text search
+	 * 
 	 */
 	public ArrayList<String> toSearchableArray() {
 		ArrayList<String> ret = new ArrayList<String>();

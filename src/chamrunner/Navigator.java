@@ -1,9 +1,9 @@
-package chamrunner;
+package chamRunner;
 
 import java.nio.file.Path;
 //import java.util.ArrayList;
 
-import chamcore.FilmNode.FileFormat;
+import chamCore.FilmNode.FileFormat;
 
 /*
  * Abstract utility class to assist in navigating file systems

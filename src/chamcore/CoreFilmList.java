@@ -1,4 +1,4 @@
-package chamcore;
+package chamCore;
 
 /*
  * CoreFilmList is the singleton list that stores all loaded film data on startup
