@@ -5,7 +5,6 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 /*
- * TODO: Path is a locator, File is the reference;may require rewriting segments
  * TODO: implement cover image reference
  */
 
@@ -68,7 +67,7 @@ public class FilmNode {
 		
 		numTimesOpened = 0;
 		format = FileFormat.NOFORMAT;
-		location = Paths.get("/");
+		location = Paths.get("\\");
 			
 	}
 	

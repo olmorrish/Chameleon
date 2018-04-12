@@ -28,7 +28,8 @@ public class SaveDataReader {
 		
 		String[] genresParsed = segmentData[6].split(">");	//second parse later
 		for(String gen : genresParsed) {
-			ret.addGenre(gen);
+			if(!gen.equals(""))	//ensure an empty line is not read in as ">" as the genre name
+				ret.addGenre(gen);
 		}
 		
 		ret.setWriter(segmentData[8]);
@@ -36,6 +37,7 @@ public class SaveDataReader {
 		
 		String[] actorsParsed = segmentData[12].split(">");
 		for(String act : actorsParsed) {
+			if(!act.equals(""))		//see genre parsing above
 			ret.addActor(act);
 		}
 		
