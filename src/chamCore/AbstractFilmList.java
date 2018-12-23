@@ -4,7 +4,6 @@ import java.io.Serializable;
 
 /*
  * FilmList is the abstract superclass for data structures containing FilmNodes;
- * 
  * head, tail 
  * 
  */

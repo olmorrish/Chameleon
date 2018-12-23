@@ -5,6 +5,7 @@ package chamCore;
  * Utilizes reader to load the Core from a text file
  * The CoreFilmList may only be instantiated by using the file loading TODO: enforce
  */
+@SuppressWarnings("serial")
 public class CoreFilmList extends AbstractFilmList {
 
 	public CoreFilmList() {
