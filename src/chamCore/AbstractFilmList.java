@@ -16,8 +16,8 @@ public abstract class AbstractFilmList {
 	}
 	
 	/*
-	 * refreshes the tree so that the FilmTreeNodes whose FilmData has the highest
-	 * 	numTimesOpened is at the top of the tree
+	 * refreshes the list so that the FilmNodes with the highest
+	 * 	numTimesOpened is at the front of the list
 	 */
 	public void refactor() {
 		//TODO

@@ -49,8 +49,8 @@ public class FilmNodeTests {
 		
 		assertTrue(node.getNumTimesOpened() == 0);
 		assertTrue(node.getFileFormat() == FileFormat.NOFORMAT);
-		assertTrue(node.getLocationAsString().equals("\\")); 
-		assertTrue(node.getCoverLocationAsString().equals("\\")); 
+		assertTrue(node.getLocation().equals("")); 
+		assertTrue(node.getCoverLocation().equals("")); 
 	}
 }
 

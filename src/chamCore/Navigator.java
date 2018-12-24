@@ -1,7 +1,6 @@
-package chamRunner;
+package chamCore;
 
 import java.nio.file.Path;
-//import java.util.ArrayList;
 
 import chamCore.FilmNode.FileFormat;
 
@@ -30,10 +29,10 @@ public abstract class Navigator {
 		}
 	}
 	
-//	
-//	public ArrayList<Path> fetchVideosWithinFile(){
-//		
-//	}
+	
+	
+	
+	
 
 
 }

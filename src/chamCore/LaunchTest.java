@@ -1,14 +1,15 @@
 package chamCore;
 
-public class SaveDataTest {
-	
+public class LaunchTest {
+
 	public static void main(String[] args) {
 		
 		CoreFilmList core = new CoreFilmList();
-		FilmNode node1 = new FilmNode("movie1", 1991);
-		FilmNode node2 = new FilmNode("movie2", 2008);
+		FilmNode node1 = new FilmNode("The Thing", 1982);
+		node1.setDirector("John Carpenter");
+		node1.setLocation("C:\\Users\\olive\\Desktop\\ChameleonTempSave\\The Thing [1982].mkv");
 		core.list.add(node1);
-		core.list.add(node2);
+
 		
 		//write the data
 		SaveDataManager rwSaver = new SaveDataManager();
@@ -18,10 +19,8 @@ public class SaveDataTest {
 		CoreFilmList core2;
 		core2 = rwSaver.restoreCoreFilmList("C:\\Users\\olive\\Desktop\\ChameleonTempSave\\core.txt");
 		
-		System.out.println(core.list.get(0).getTitle());
-		System.out.println(core2.list.get(0).getTitle());
-		System.out.println(core.list.get(1).getTitle());
-		System.out.println(core2.list.get(1).getTitle());
-		
+		core2.list.get(0).launch();
+
 	}
+	
 }

@@ -1,11 +1,10 @@
 package chamCore;
 
+import java.awt.Desktop;
+import java.io.File;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
-
-/*
- * TODO: implement cover image reference
- */
 
 /*
  * FilmNode Contains all abstracted information relating to a film. This class is removed from the usage of the 
@@ -44,7 +43,6 @@ public class FilmNode implements Serializable {
 	private FileFormat format; 
 	private String location;
 	private String coverLocation;
-	//TODO: cover image reference to be added
 	
 	
 	/////////////////////////////////////////////////////////
@@ -116,6 +114,16 @@ public class FilmNode implements Serializable {
 		this();
 		title = ttl;
 		year = yr;
+	}
+	
+	/*
+	 * File location constructor
+	 */
+	public FilmNode(String loc) {
+		this();
+		File reference = new File(loc);		
+		title = reference.getName();
+		year = 0;
 	}
 
 	/////////////////////////////////////////////////////////
@@ -214,17 +222,9 @@ public class FilmNode implements Serializable {
 	public String getLocation() {
 		return location;
 	}
-	
-	public String getLocationAsString() {
-		return location.toString();
-	}
 
 	public String getCoverLocation() {
 		return coverLocation;
-	}
-	
-	public String getCoverLocationAsString() {
-		return coverLocation.toString();
 	}
 	
 	/////////////////////////////////////////////////////////
@@ -322,7 +322,21 @@ public class FilmNode implements Serializable {
 	 * this should increment numTimesOened:int in the data of the film 
 	 */
 	public void launch() {
-		//TODO: need some API to launch, depends on file format
+		
+		try {
+			Desktop.getDesktop().open(new File(location));
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+			System.err.println("Error finding file to open. Location error.");
+			return;
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.err.println("Error opening file.");
+			return;
+		}
+		
+		numTimesOpened++;	//only increments on successful open
+       
 	}
 	
 	/*
