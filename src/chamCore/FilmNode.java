@@ -1,7 +1,6 @@
 package chamCore;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /*
@@ -23,14 +22,14 @@ import java.util.ArrayList;
  * Refer to AbstractFilmList for details on implementation.
  * 		FilmNode is not meant to be instantiated outside of a Chameleon list structure.
  */
-public class FilmNode {
+@SuppressWarnings("serial")
+public class FilmNode implements Serializable {
 
 	/////////////////////////////////////////////////////////
 	/// Instance Parameters
 	/////////////////////////////////////////////////////////	
 	
 	public enum FileFormat{NOFORMAT, AVI, FLV, WMV, MOV, MP4}
-	private FilmNode next;
 	
 	private String title;
 	private int year;
@@ -43,8 +42,8 @@ public class FilmNode {
 	//file data parameters
 	private int numTimesOpened;
 	private FileFormat format; 
-	private Path location;
-	private Path coverLocation;
+	private String location;
+	private String coverLocation;
 	//TODO: cover image reference to be added
 	
 	
@@ -56,7 +55,6 @@ public class FilmNode {
 	 * Default constructor
 	 */
 	public FilmNode() {
-		next = null;
 		
 		title = "";
 		year = 0;
@@ -68,8 +66,8 @@ public class FilmNode {
 		
 		numTimesOpened = 0;
 		format = FileFormat.NOFORMAT;
-		location = Paths.get("\\");
-		coverLocation = Paths.get("\\");
+		location = ("");
+		coverLocation = ("");
 			
 	}
 	
@@ -77,7 +75,6 @@ public class FilmNode {
 	 * Copy constructor
 	 */
 	public FilmNode(FilmNode f) {
-		next = null;
 		
 		title = f.title;
 		year = f.year;
@@ -175,19 +172,6 @@ public class FilmNode {
 	
 	
 	/////////////////////////////////////////////////////////
-	/// Linked List Get/Set
-	/////////////////////////////////////////////////////////	
-	
-	public FilmNode getNext() {
-		return next;
-	}
-	
-	public void setNext(FilmNode node) {
-		next = node;
-	}
-	
-	
-	/////////////////////////////////////////////////////////
 	/// Getters
 	/////////////////////////////////////////////////////////
 	
@@ -227,7 +211,7 @@ public class FilmNode {
 		return format;
 	}
 	
-	public Path getLocation() {
+	public String getLocation() {
 		return location;
 	}
 	
@@ -235,7 +219,7 @@ public class FilmNode {
 		return location.toString();
 	}
 
-	public Path getCoverLocation() {
+	public String getCoverLocation() {
 		return coverLocation;
 	}
 	
@@ -300,20 +284,12 @@ public class FilmNode {
 		}
 	}
 	
-	public void setLocation(Path loc) {
-		location = loc;
+	public void setLocation(String loc) {
+		location = loc;		
 	}
 	
-	public void setLocation(String path) {
-		location = Paths.get(path);		
-	}
-	
-	public void setCoverLocation(Path loc) {
+	public void setCoverLocation(String loc) {
 		coverLocation = loc;
-	}
-	
-	public void setCoverLocation(String path) {
-		coverLocation = Paths.get(path);		
 	}
 	
 	/////////////////////////////////////////////////////////
@@ -347,40 +323,6 @@ public class FilmNode {
 	 */
 	public void launch() {
 		//TODO: need some API to launch, depends on file format
-	}
-	
-	/*
-	 * toString() method for Saving to external files
-	 * for unpacker/loader see File-Load constructor
-	 */
-	public String toStringSaveFormat() {
-		//Note that 
-		
-		String titleFrag = "|T|" + title; 
-		String yearFrag = "|Y|" + (Integer.toString(year));
-		
-		String genreFrag = "|G|";
-		for (String genre : genres) {
-			genreFrag += (genre + '>');
-		}
-		
-		String writerFrag = "|W|" + writer;
-		String directorFrag = "|D|" + director;
-		
-		String actorFrag = "|A|";
-		for (String actor : actors) {
-			actorFrag += (actor + '>');
-		}
-		
-		String openFrag = "|O|" + (Integer.toString(numTimesOpened));
-		String formatFrag = "|F|" + format.toString();
-		String locationFrag = "|L|" + (location.toString());
-		String coverFrag = "|C|" + (coverLocation.toString());
-		
-		String ret = titleFrag + yearFrag + genreFrag + writerFrag;
-		ret = ret + directorFrag + actorFrag + openFrag + formatFrag + locationFrag + coverFrag;
-		ret = ret + "|";
-		return ret;
 	}
 	
 	/*

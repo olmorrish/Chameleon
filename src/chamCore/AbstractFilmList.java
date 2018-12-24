@@ -1,32 +1,18 @@
 package chamCore;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 
 /*
  * FilmList is the abstract superclass for data structures containing FilmNodes;
  * head, tail 
  * 
  */
-@SuppressWarnings("serial")
-public abstract class AbstractFilmList implements Serializable {
+public abstract class AbstractFilmList {
 
-	public FilmNode head;
-	public FilmNode tail;
+	public ArrayList<FilmNode> list;
 	
-	
-	/////////////////////////////////////////////////////////
-	/// Organizational Methods
-	/////////////////////////////////////////////////////////	
-	
-	public void append(FilmNode node) {
-		if(head == null) {
-			head = node;
-			tail = head;
-		}
-		else {
-		tail.setNext(node);
-		tail = tail.getNext();
-		}
+	public AbstractFilmList() {
+		list = new ArrayList<FilmNode>();
 	}
 	
 	/*

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 /*
  * SaveDataReader is a file reader that contains implementations to help construct the CoreFilmList
@@ -26,14 +27,16 @@ public class SaveDataManager {
 		try {
 			writer = new FileOutputStream(saveDirectory);
 			objWriter = new ObjectOutputStream(writer);
-			objWriter.writeObject(coreToSave);
+
+			objWriter.writeObject(coreToSave.list);
+
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.err.println("CoreFilmList save-state could not be located.");
 		} catch (IOException e) {
 			e.printStackTrace();
-			System.err.println("Object reader setup for CoreFilmList save failed.");
+			System.err.println("Object writing for CoreFilmList failed.");
 		}
 		finally {
 			try {
@@ -50,9 +53,10 @@ public class SaveDataManager {
 	 * @param directory location of file of serialized core list
 	 * @returns CoreFilmList instance to be used
 	 */
+	@SuppressWarnings("unchecked")
 	public CoreFilmList restoreCoreFilmList(String saveDirectory) {
 		
-		CoreFilmList recovery = null;
+		CoreFilmList recovery = new CoreFilmList();
 		
 		FileInputStream reader = null;
 		ObjectInputStream objReader = null;
@@ -60,7 +64,7 @@ public class SaveDataManager {
 			reader = new FileInputStream(saveDirectory);
 			objReader = new ObjectInputStream(reader);
 			
-			recovery = (CoreFilmList) objReader.readObject();
+			recovery.list = (ArrayList<FilmNode>) objReader.readObject();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
