@@ -360,6 +360,15 @@ public class FilmNode implements Serializable {
 			ret.add(actor);
 		}
 		
+		//make each entry lowercase
+		for(int i=0; i<ret.size(); i++) {
+			ret.add(ret.get(i).toLowerCase());
+		}
+		
+		for(int i=0; i<ret.size()/2; i++) {
+			ret.remove(0);
+		}
+		
 		return ret;
 	}
 	

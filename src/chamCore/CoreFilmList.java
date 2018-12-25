@@ -18,8 +18,8 @@ public class CoreFilmList extends AbstractFilmList implements Serializable{
 	/*
 	 * Constructor from file
 	 */
-	public CoreFilmList(FilmNode headNode) {
-		// TODO Auto-generated constructor stub
-	}
+//	public CoreFilmList() {
+//		// TODO Auto-generated constructor stub
+//	}
 
 }

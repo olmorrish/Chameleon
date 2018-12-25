@@ -10,38 +10,19 @@ public class QueryFilmList extends AbstractFilmList {
 	 * Empty constructor
 	 */
 	public QueryFilmList() {
-		
+		super();	//TODO double check this
 	}
 
 	/*
-	 * Head node constructor
+	 * Builds a QueryFilmList by copying all nodes of the core list that contain the provided parameter
+	 * This is the typical use case for Query List builds; a return for search function
 	 */
-	public QueryFilmList(FilmNode headNode) {
-		
+	public QueryFilmList(CoreFilmList core, String searchParameter) {
+		int len = core.list.size();
+		for(int i=0; i<len; i++) {
+			if(core.list.get(i).contains(searchParameter)) {
+				list.add(new FilmNode(core.list.get(i)));	//creates copy of node TODO check if its better to set reference
+			}
+		}
 	}
-
-	/////////////////////////////////////////////////////////
-	/// Search Methods
-	/////////////////////////////////////////////////////////
-	
-	public FilmNode[] searchAll(String query) {
-		return null; //TODO
-	}
-	
-	/////////////////////////////////////////////////////////
-	/// Organized Tree Representation Getters
-	/////////////////////////////////////////////////////////	
-	
-	public FilmNode[] getAllNodesAlphebeticalByTitle() {
-		return null; //TODO
-	}
-	
-	public FilmNode[] getAllNodesChronological() {
-		return null; //TODO
-	}
-	
-	public FilmNode [] getAllNodesRandom() {
-		return null; //TODO
-	}
-	
 }

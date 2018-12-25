@@ -52,6 +52,90 @@ public class FilmNodeTests {
 		assertTrue(node.getLocation().equals("")); 
 		assertTrue(node.getCoverLocation().equals("")); 
 	}
+	
+	@Test
+	public void testSearchForFilmTitle() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		assertTrue(node.contains("SomeTitle"));
+	}
+	
+	@Test
+	public void testSearchForYear() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		assertTrue(node.contains("2000"));
+	}
+	
+	@Test
+	public void testSearchForWrongYear() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		assertFalse(node.contains("2001"));
+	}
+	
+	@Test
+	public void testSearchForFilmTitleSubstring() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		assertTrue(node.contains("SomeTi"));
+	}
+	
+	@Test
+	public void testSearchForFilmTitleSubstringLowerCase() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		assertTrue(node.contains("sometitl"));
+	}
+	
+	@Test
+	public void testSearchForInfoPresentInMultipleFields() {
+		FilmNode node = new FilmNode("007", 2007);
+		assertTrue(node.contains("00"));
+	}
+	
+	@Test
+	public void testSearchForActor() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		node.addActor("John Smith");
+		assertTrue(node.contains("Smith"));
+	}
+	
+	@Test
+	public void testSearchForGenre() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		node.addGenre("Horror");
+		assertTrue(node.contains("Horror"));
+	}
+	
+	@Test
+	public void testSearchInAllFields() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		node.setDirector("John Smith");
+		node.addActor("Jane Smith");
+		node.addActor("Jane Doe");
+		node.addActor("John Doe");
+		node.addGenre("Horror");
+		node.setWriter("Charlie Kaufman");
+		
+		assertTrue(node.contains("John"));
+		assertTrue(node.contains("doe"));
+		assertTrue(node.contains("aufm"));
+		assertFalse(node.contains("Nicholas"));
+	}
+	
+	@Test
+	public void testSearchDiscludesLocationReferences() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		node.setLocation("C:\\MyDocuments\\Movies");
+		node.setCoverLocation("C:\\MyDocuments\\MovieCovers");
+		
+		assertFalse(node.contains("MyDocuments"));
+		assertFalse(node.contains("Movie"));
+	}
+	
+	@Test
+	public void testSearchDiscludesFileFormat() {
+		FilmNode node = new FilmNode("SomeTitle", 2000);
+		node.setFileFormat("MP4");
+		
+		assertFalse(node.contains("MP4"));
+	}
 }
 
 
