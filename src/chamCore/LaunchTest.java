@@ -1,4 +1,5 @@
 package chamCore;
+//import chamCore.SaveDataManager;;
 
 public class LaunchTest {
 
@@ -10,17 +11,14 @@ public class LaunchTest {
 		node1.setLocation("C:\\Users\\olive\\Desktop\\ChameleonTempSave\\The Thing [1982].mkv");
 		core.list.add(node1);
 
-		
 		//write the data
-		SaveDataManager rwSaver = new SaveDataManager();
-		rwSaver.saveCoreFilmList(core, "C:\\Users\\olive\\Desktop\\ChameleonTempSave\\core.txt");
+		SaveDataManager.saveFilmList(core, "C:\\Users\\olive\\Desktop\\ChameleonTempSave\\core.txt");
 		
 		//now read the data 
 		FilmList core2;
-		core2 = rwSaver.restoreCoreFilmList("C:\\Users\\olive\\Desktop\\ChameleonTempSave\\core.txt");
+		core2 = SaveDataManager.loadFilmList("C:\\Users\\olive\\Desktop\\ChameleonTempSave\\core.txt");
 		
 		core2.list.get(0).launch();
 
 	}
-	
 }

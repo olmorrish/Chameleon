@@ -13,14 +13,15 @@ import java.util.ArrayList;
  */
 public class SaveDataManager {
 
-	public SaveDataManager() {
+	//private constructor to prevent instantiation; utility class
+	private SaveDataManager() {
 		
 	}
 	
 	/*
 	 * @params the CoreFilmList and directory to save to
 	 */
-	public void saveCoreFilmList(FilmList coreToSave, String saveDirectory) {
+	public static void saveFilmList(FilmList coreToSave, String saveDirectory) {
 		FileOutputStream writer = null;
 		ObjectOutputStream objWriter = null;
 		try {
@@ -53,7 +54,7 @@ public class SaveDataManager {
 	 * @returns CoreFilmList instance to be used
 	 */
 	@SuppressWarnings("unchecked")
-	public FilmList restoreCoreFilmList(String saveDirectory) {
+	public static FilmList loadFilmList(String saveDirectory) {
 		
 		FilmList recovery = new FilmList();
 		
