@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * 		FilmNode is not meant to be instantiated outside of a Chameleon list structure.
  */
 @SuppressWarnings("serial")
-public class FilmNode implements Serializable {
+public class Film implements Serializable {
 
 	/////////////////////////////////////////////////////////
 	/// Instance Parameters
@@ -52,7 +52,7 @@ public class FilmNode implements Serializable {
 	/*
 	 * Default constructor
 	 */
-	public FilmNode() {
+	public Film() {
 		
 		title = "";
 		year = 0;
@@ -72,7 +72,7 @@ public class FilmNode implements Serializable {
 	/*
 	 * Copy constructor
 	 */
-	public FilmNode(FilmNode f) {
+	public Film(Film f) {
 		
 		title = f.title;
 		year = f.year;
@@ -110,7 +110,7 @@ public class FilmNode implements Serializable {
 	/*
 	 * Film+Title Only Constructor
 	 */
-	public FilmNode(String ttl, int yr) {
+	public Film(String ttl, int yr) {
 		this();
 		title = ttl;
 		year = yr;
@@ -119,7 +119,7 @@ public class FilmNode implements Serializable {
 	/*
 	 * File location constructor
 	 */
-	public FilmNode(String loc) {
+	public Film(String loc) {
 		this();
 		File reference = new File(loc);		
 		title = reference.getName();
@@ -134,7 +134,7 @@ public class FilmNode implements Serializable {
 	 * Alternate equals comparator; ignores "next" parameter 
 	 * compares content of the node only; this is a utility method to assist class testability
 	 */
-	public boolean equalsContentOf(FilmNode compare) {
+	public boolean equalsContentOf(Film compare) {
 		
 		if(!(title.equals(compare.getTitle())))
 			return false;

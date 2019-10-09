@@ -11,10 +11,10 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class FilmList implements Serializable{
 
-	public ArrayList<FilmNode> list;
+	public ArrayList<Film> list;
 	
 	public FilmList() {
-		list = new ArrayList<FilmNode>();
+		list = new ArrayList<Film>();
 	}
 	
 	/*
@@ -25,7 +25,7 @@ public class FilmList implements Serializable{
 		int len = core.list.size();
 		for(int i=0; i<len; i++) {
 			if(core.list.get(i).contains(searchParameter)) {	//TODO: contains() is not correct!
-				list.add(new FilmNode(core.list.get(i)));
+				list.add(new Film(core.list.get(i)));
 			}
 		}
 	}

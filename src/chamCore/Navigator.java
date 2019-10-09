@@ -2,7 +2,7 @@ package chamCore;
 
 import java.nio.file.Path;
 
-import chamCore.FilmNode.FileFormat;
+import chamCore.Film.FileFormat;
 
 /*
  * Abstract utility class to assist in navigating file systems

@@ -10,7 +10,7 @@ public class FilmListTests {
 	@Test
 	public void testSingleNodeCopy() {
 		FilmList core = new FilmList();
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		core.list.add(node);
 		FilmList query = new FilmList(core, "SomeTitle");
 		
@@ -21,8 +21,8 @@ public class FilmListTests {
 	@Test
 	public void testQueryDiscludesIrrelevantFirstNode() {
 		FilmList core = new FilmList();
-		FilmNode node1 = new FilmNode("SomeTitle", 2000);
-		FilmNode node2 = new FilmNode("SecondTitle", 2002);
+		Film node1 = new Film("SomeTitle", 2000);
+		Film node2 = new Film("SecondTitle", 2002);
 		core.list.add(node1);
 		core.list.add(node2);
 		FilmList query = new FilmList(core, "2002");
@@ -33,8 +33,8 @@ public class FilmListTests {
 	@Test
 	public void testQueryCopiesTwoNodes() {
 		FilmList core = new FilmList();
-		FilmNode node1 = new FilmNode("Title", 2000);
-		FilmNode node2 = new FilmNode("Title 2", 2002);
+		Film node1 = new Film("Title", 2000);
+		Film node2 = new Film("Title 2", 2002);
 		core.list.add(node1);
 		core.list.add(node2);
 		FilmList query = new FilmList(core, "Title");
@@ -46,7 +46,7 @@ public class FilmListTests {
 	@Test
 	public void testQueryBuildForNoResults() {
 		FilmList core = new FilmList();
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		core.list.add(node);
 		FilmList query = new FilmList(core, "SomeOtherTitle");
 		

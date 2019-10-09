@@ -5,29 +5,29 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import chamCore.FilmNode.FileFormat;
+import chamCore.Film.FileFormat;
 
-public class FilmNodeTests {
+public class FilmTests {
 	
 	@Test
 	public void testContentEqualityMethodOnSingleNode() {
-		FilmNode node1 = new FilmNode();
+		Film node1 = new Film();
 		assertTrue(node1.equalsContentOf(node1));
 	}	
 	
 	@Test
 	public void testContentEqualityMethodForEqualNodes() {
-		FilmNode node1 = new FilmNode();
-		FilmNode node2 = new FilmNode();
+		Film node1 = new Film();
+		Film node2 = new Film();
 		
 		assertTrue(node1.equalsContentOf(node2));
 	}
 	
 	@Test
 	public void testContentEqualityMethodForNonEqualNodes() {
-		FilmNode node1 = new FilmNode();
+		Film node1 = new Film();
 		node1.setTitle("Something");
-		FilmNode node2 = new FilmNode();
+		Film node2 = new Film();
 		node2.setTitle("Something Else");
 		
 		assertFalse(node1.equalsContentOf(node2));
@@ -36,7 +36,7 @@ public class FilmNodeTests {
 	@Test
 	public void testAllDefaultValuesAreCorrectViaManualAccess() {
 		
-		FilmNode node = new FilmNode();
+		Film node = new Film();
 		
 		assertTrue(node.getTitle().equals(""));
 		assertTrue(node.getYear() == 0);
@@ -55,57 +55,57 @@ public class FilmNodeTests {
 	
 	@Test
 	public void testSearchForFilmTitle() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		assertTrue(node.contains("SomeTitle"));
 	}
 	
 	@Test
 	public void testSearchForYear() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		assertTrue(node.contains("2000"));
 	}
 	
 	@Test
 	public void testSearchForWrongYear() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		assertFalse(node.contains("2001"));
 	}
 	
 	@Test
 	public void testSearchForFilmTitleSubstring() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		assertTrue(node.contains("SomeTi"));
 	}
 	
 	@Test
 	public void testSearchForFilmTitleSubstringLowerCase() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		assertTrue(node.contains("sometitl"));
 	}
 	
 	@Test
 	public void testSearchForInfoPresentInMultipleFields() {
-		FilmNode node = new FilmNode("007", 2007);
+		Film node = new Film("007", 2007);
 		assertTrue(node.contains("00"));
 	}
 	
 	@Test
 	public void testSearchForActor() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		node.addActor("John Smith");
 		assertTrue(node.contains("Smith"));
 	}
 	
 	@Test
 	public void testSearchForGenre() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		node.addGenre("Horror");
 		assertTrue(node.contains("Horror"));
 	}
 	
 	@Test
 	public void testSearchInAllFields() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		node.setDirector("John Smith");
 		node.addActor("Jane Smith");
 		node.addActor("Jane Doe");
@@ -121,7 +121,7 @@ public class FilmNodeTests {
 	
 	@Test
 	public void testSearchDiscludesLocationReferences() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		node.setLocation("C:\\MyDocuments\\Movies");
 		node.setCoverLocation("C:\\MyDocuments\\MovieCovers");
 		
@@ -131,7 +131,7 @@ public class FilmNodeTests {
 	
 	@Test
 	public void testSearchDiscludesFileFormat() {
-		FilmNode node = new FilmNode("SomeTitle", 2000);
+		Film node = new Film("SomeTitle", 2000);
 		node.setFileFormat("MP4");
 		
 		assertFalse(node.contains("MP4"));

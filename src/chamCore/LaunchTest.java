@@ -5,7 +5,7 @@ public class LaunchTest {
 	public static void main(String[] args) {
 		
 		FilmList core = new FilmList();
-		FilmNode node1 = new FilmNode("The Thing", 1982);
+		Film node1 = new Film("The Thing", 1982);
 		node1.setDirector("John Carpenter");
 		node1.setLocation("C:\\Users\\olive\\Desktop\\ChameleonTempSave\\The Thing [1982].mkv");
 		core.list.add(node1);

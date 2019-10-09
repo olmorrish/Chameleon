@@ -63,7 +63,7 @@ public class SaveDataManager {
 			reader = new FileInputStream(saveDirectory);
 			objReader = new ObjectInputStream(reader);
 			
-			recovery.list = (ArrayList<FilmNode>) objReader.readObject();
+			recovery.list = (ArrayList<Film>) objReader.readObject();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
