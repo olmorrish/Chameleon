@@ -20,7 +20,7 @@ public class SaveDataManager {
 	/*
 	 * @params the CoreFilmList and directory to save to
 	 */
-	public void saveCoreFilmList(CoreFilmList coreToSave, String saveDirectory) {
+	public void saveCoreFilmList(FilmList coreToSave, String saveDirectory) {
 		FileOutputStream writer = null;
 		ObjectOutputStream objWriter = null;
 		try {
@@ -53,9 +53,9 @@ public class SaveDataManager {
 	 * @returns CoreFilmList instance to be used
 	 */
 	@SuppressWarnings("unchecked")
-	public CoreFilmList restoreCoreFilmList(String saveDirectory) {
+	public FilmList restoreCoreFilmList(String saveDirectory) {
 		
-		CoreFilmList recovery = new CoreFilmList();
+		FilmList recovery = new FilmList();
 		
 		FileInputStream reader = null;
 		ObjectInputStream objReader = null;
