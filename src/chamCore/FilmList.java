@@ -29,20 +29,4 @@ public class FilmList implements Serializable{
 			}
 		}
 	}
-	
-	/*
-	 * refreshes the list so that the FilmNodes with the highest
-	 * 	numTimesOpened is at the front of the list
-	 */
-	public void refactor() {
-		//TODO
-	}	
-
-	/*
-	 * Constructor from file
-	 */
-//	public FilmList() {
-//		// TODO Auto-generated constructor stub
-//	}
-
 }
