@@ -30,19 +30,19 @@ public class Film implements Serializable {
 	
 	public enum FileFormat{NOFORMAT, AVI, FLV, WMV, MOV, MP4}
 	
-	private String title;
-	private int year;
+	public String title;
+	public int year;
 	private ArrayList<String> genres;
 	
-	private String writer;
-	private String director;
+	public String writer;
+	public String director;
 	private ArrayList<String> actors;
 	
 	//file data parameters
-	private int numTimesOpened;
+	public int numTimesOpened;
 	private FileFormat format; 
-	private String location;
-	private String coverLocation;
+	public String location;
+	public String coverLocation;
 	
 	
 	/////////////////////////////////////////////////////////
@@ -136,9 +136,9 @@ public class Film implements Serializable {
 	 */
 	public boolean equalsContentOf(Film compare) {
 		
-		if(!(title.equals(compare.getTitle())))
+		if(!(title.equals(compare.title)))
 			return false;
-		if(year != compare.getYear())	
+		if(year != compare.year)	
 			return false;
 		
 		if(genres.size() == 0) {
@@ -152,9 +152,9 @@ public class Film implements Serializable {
 			}
 		}
 		
-		if(!writer.equals(compare.getWriter()))
+		if(!writer.equals(compare.writer))
 			return false;
-		if(!director.equals(compare.getDirector()))
+		if(!director.equals(compare.director))
 			return false;
 		
 		if(actors.size() == 0) {
@@ -168,11 +168,11 @@ public class Film implements Serializable {
 			}
 		}		
 		
-		if(numTimesOpened != compare.getNumTimesOpened())
+		if(numTimesOpened != compare.numTimesOpened)
 			return false;
 		if(format != compare.getFileFormat())
 			return false;
-		if(!location.equals(compare.getLocation()))
+		if(!location.equals(compare.location))
 			return false;
 
 		return true; //if all checks pass, true is returned instead of false
@@ -183,65 +183,21 @@ public class Film implements Serializable {
 	/// Getters
 	/////////////////////////////////////////////////////////
 	
-	public String getTitle() {
-		return title;
-	}
-	
-	public int getYear() {
-		return year;
-	}
-	
-	public String getYearAsString() {
-		return (Integer.toString(year));
-	}
-	
 	public ArrayList<String> getGenres() {
 		return genres;
-	}
-	
-	public String getWriter() {
-		return writer;
-	}
-	
-	public String getDirector() {
-		return director;
 	}
 	
 	public ArrayList<String> getActors() {
 		return actors;
 	}
 	
-	public int getNumTimesOpened() {
-		return numTimesOpened;
-	}
-	
 	public FileFormat getFileFormat() {
 		return format;
-	}
-	
-	public String getLocation() {
-		return location;
-	}
-
-	public String getCoverLocation() {
-		return coverLocation;
 	}
 	
 	/////////////////////////////////////////////////////////
 	/// Setters 
 	/////////////////////////////////////////////////////////	
-	
-	public void setTitle(String ttl) {
-		title = ttl;
-	}
-	
-	public void setYear(int yr) {
-		year = yr;
-	}
-	
-	public void setYear(String yr) {
-		year = Integer.parseInt(yr);
-	}
 	
 	public void setGenres(ArrayList<String> gen) {
 		for(int i = 0; i<gen.size(); i++) {
@@ -249,22 +205,10 @@ public class Film implements Serializable {
 		}
 	}
 	
-	public void setWriter(String wri) {
-		writer = wri;
-	}
-	
-	public void setDirector(String dir) {
-		director = dir;
-	}
-	
 	public void setActors(ArrayList<String> acts) {
 		for(int i = 0; i<acts.size();i++) {
 			actors.add(i, acts.get(i));
 		}
-	}
-	
-	public void setNumTimesOpened(int num) {
-		numTimesOpened = num;
 	}
 	
 	public void setFileFormat(String ext) {
@@ -282,14 +226,6 @@ public class Film implements Serializable {
 		default: format = FileFormat.NOFORMAT;
 			break;
 		}
-	}
-	
-	public void setLocation(String loc) {
-		location = loc;		
-	}
-	
-	public void setCoverLocation(String loc) {
-		coverLocation = loc;
 	}
 	
 	/////////////////////////////////////////////////////////
@@ -319,7 +255,7 @@ public class Film implements Serializable {
 	
 	/*
 	 * attempts to open the film associated with this node
-	 * this should increment numTimesOened:int in the data of the film 
+	 * this should increment numTimesOpened:int in the data of the film 
 	 */
 	public void launch() {
 		

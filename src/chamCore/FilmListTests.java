@@ -14,8 +14,8 @@ public class FilmListTests {
 		core.list.add(node);
 		FilmList query = new FilmList(core, "SomeTitle");
 		
-		assertTrue(query.list.get(0).getTitle().equals("SomeTitle"));
-		assertTrue(query.list.get(0).getYearAsString().equals("2000"));
+		assertTrue(query.list.get(0).title.equals("SomeTitle"));
+		assertTrue(query.list.get(0).year == 2000);		
 	}
 	
 	@Test
@@ -27,7 +27,7 @@ public class FilmListTests {
 		core.list.add(node2);
 		FilmList query = new FilmList(core, "2002");
 		
-		assertTrue(query.list.get(0).getTitle().equals("SecondTitle"));
+		assertTrue(query.list.get(0).title.equals("SecondTitle"));
 	}
 	
 	@Test
@@ -39,8 +39,8 @@ public class FilmListTests {
 		core.list.add(node2);
 		FilmList query = new FilmList(core, "Title");
 		
-		assertTrue(query.list.get(0).getTitle().equals("Title"));
-		assertTrue(query.list.get(1).getTitle().equals("Title 2"));
+		assertTrue(query.list.get(0).title.equals("Title"));
+		assertTrue(query.list.get(1).title.equals("Title 2"));
 	}
 	
 	@Test
@@ -50,7 +50,7 @@ public class FilmListTests {
 		core.list.add(node);
 		FilmList query = new FilmList(core, "SomeOtherTitle");
 		
-		assertFalse(query.list.get(0).getTitle().equals("SomeTitle"));
+		assertFalse(query.list.get(0).title.equals("SomeTitle"));
 		assertTrue(query.list.equals(null));
 	}
 	
